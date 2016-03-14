@@ -11,7 +11,7 @@ var RouteItem = function (path, template, event) {
     this.event = event;
 }
 
-var EasyRouter = function (options) {
+var MicroRouter = function (options) {
 
     if (!options) {
         options = {
@@ -57,10 +57,9 @@ var EasyRouter = function (options) {
     window.addEventListener('load', route.bind(this));
     window.addEventListener('hashchange', route.bind(this));
 
-
 };
 
-EasyRouter.prototype.addRoute = function (path, template, event) {
+MicroRouter.prototype.addRoute = function (path, template, event) {
     var templateElement = document.querySelector(template);
     if (templateElement) {
         templateElement.style.display = 'none';
