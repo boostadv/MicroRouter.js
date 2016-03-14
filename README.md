@@ -51,7 +51,7 @@ Put `microrouter.min.js` file into folder and this text into `<head>` section:
 
 ### forceRoute(path) 
 
-If you want to change view from yours JS code.
+If you want to change view from your JS code.
 
 ```javascript
  router.forceRoute("home");
