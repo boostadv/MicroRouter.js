@@ -11,14 +11,14 @@ Put this text into `<head>` section:
 
 ## Getting started
 
-1. Create a empty view `<div>` for content. 
-2. Create MicroRouter object with view div selector as option:
+Create a empty view `<div>` for content. 
+Create MicroRouter object with view div selector as option:
 ```javascript
 		var router = new MicroRouter({
 			view: "#view"
 		});
 ``` 
-3. Create a `<div>` (or other elements) with content:
+Create a `<div>` (or other elements) with content:
 ```html
 	<div id="content_page1">Start Page</div>
 	<div id="content_page2">Page 2</div>
@@ -26,7 +26,7 @@ Put this text into `<head>` section:
 
 **NOTE: All this elements will be hidden automaticly by**  `display: none`  **attribute**
 
-4. Add routes:
+Add routes:
 ```javascript
     router.addRoute("home", "#content_page1");
     router.addRoute("page2", "#content_page2");
@@ -34,7 +34,7 @@ Put this text into `<head>` section:
 
 **NOTE: The first route is a default route**
 
-5. Profit!
+Profit!
 
 ## Functions
 
