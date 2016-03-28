@@ -22,7 +22,7 @@ var MicroRouter = function (options) {
     this.routesList = [];
     var viewElement = document.querySelector(options.view);
 
-    function route() {
+    function doRoute() {
         var url = location.hash.slice(2) || '';
         var route = getRouteByUrl.call(this, url);
         loadTemplate(route);
@@ -34,7 +34,7 @@ var MicroRouter = function (options) {
             var templateElement = document.querySelector(route.template);
             if (templateElement) {
                 viewElement.innerHTML = templateElement.innerHTML;
-                if (route.event) route.event();
+                if (route.event) route.event.call(window);
             }
         }
     }
@@ -47,19 +47,9 @@ var MicroRouter = function (options) {
         }
          if (this.routesList.length > 0) return this.routesList[0];
     }
-
-    this.forceRoute = function (url) {
-        var route = getRouteByUrl.call(this, url);
-        window.location.hash = "/" + url;
-        loadTemplate(route);
-    };
-
-    window.addEventListener('load', route.bind(this));
-    window.addEventListener('hashchange', route.bind(this));
-
-};
-
-MicroRouter.prototype.addRoute = function (path, template, event) {
+    
+    
+    this.addRoute = function (path, template, event) {
     var templateElement = document.querySelector(template);
     if (templateElement) {
         templateElement.style.display = 'none';
@@ -67,5 +57,17 @@ MicroRouter.prototype.addRoute = function (path, template, event) {
     } else {
         throw template + " not found in current DOM";
     }
+
+
+    this.forceRoute = function (url) {
+        var route = getRouteByUrl.call(this, url);
+        window.location.hash = "/" + url;
+        loadTemplate(route);
+        };
+
+    };
+
+    window.addEventListener('load', doRoute.bind(this));
+    window.addEventListener('hashchange', doRoute.bind(this));
 
 };
