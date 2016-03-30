@@ -5,13 +5,15 @@
  */
 
 
+;(function() {
+
 var RouteItem = function (path, template, event) {
     this.path = path;
     this.template = template;
     this.event = event;
 }
 
-var MicroRouter = function (options) {
+this.MicroRouter = function (options) {
 
     if (!options) {
         options = {
@@ -71,3 +73,5 @@ var MicroRouter = function (options) {
     window.addEventListener('hashchange', doRoute.bind(this));
 
 };
+
+})();
